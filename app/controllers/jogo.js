@@ -28,7 +28,11 @@ module.exports.pergaminhos = (application, req, res) => {
         res.render('index',{validacao: {}, dadosForm: {}})
         return
     }
-    res.render('pergaminhos', {validacao: {}})
+
+    const connection = application.config.dbConnection
+    const JogoDAO = new application.app.models.JogoDAO(connection)
+
+    JogoDAO.getAcoes(res,req,req.session.usuario)
 }
 
 module.exports.ordernar_acao_sudito = (application, req, res) =>{

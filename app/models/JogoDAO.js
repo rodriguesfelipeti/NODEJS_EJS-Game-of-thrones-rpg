@@ -35,11 +35,15 @@ JogoDAO.prototype.acao = function(acao){
         mongoclient.collection("acao",(err, collection) => {
             const date = new Date()
             let tempo = null
-            switch(acao.acao){
+            switch(parseInt(acao.acao)){
                 case 1: tempo = 1 * 60 * 60000 
-                case 1: tempo = 2 * 60 * 60000
-                case 1: tempo = 5 * 60 * 60000
-                case 1: tempo = 5 * 60 * 60000
+                break
+                case 2: tempo = 2 * 60 * 60000
+                break
+                case 3: tempo = 5 * 60 * 60000
+                break
+                case 4: tempo = 5 * 60 * 60000
+                break
             }
             acao.acao_termina_eim = date.getTime() + tempo
             collection.insert(acao)
@@ -47,5 +51,17 @@ JogoDAO.prototype.acao = function(acao){
         })     
     })
 }
+
+JogoDAO.prototype.getAcoes = function(res,req,usuario){
+    this._connection.open((err, mongoclient) => {
+        mongoclient.collection("acao",(err, collection) => {
+            collection.find({usuario: usuario}).toArray((err, result) => { 
+                res.render('pergaminhos', {acoes: result})
+            }) 
+            mongoclient.close()
+        })     
+    }) 
+}
+
 
 module.exports = () => JogoDAO

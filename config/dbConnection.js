@@ -3,7 +3,7 @@ const mongo = require('mongodb')
 
 // NÃO ABRE A CONEXÃO EM TODAS REQUESTS (RETORN CONST COM CONEXÃO)
 const connMongoDB = () => {
-    console.log("Connected")
+
     var db = new mongo.Db(
         'got', //game of thrones
         new mongo.Server(

@@ -4,6 +4,10 @@ $(document).ready((e)=> {
         window.location.href= '/sair'
     })
 
+    $('#btn-cadastro').click((e)=>{
+        window.location.href= '/cadastro'
+    })
+
     //btn suditos
     $("#btn-suditos").click((e)=>{
        $("#msg").hide() 

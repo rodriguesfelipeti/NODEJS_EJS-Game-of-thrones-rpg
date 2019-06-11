@@ -6,7 +6,7 @@ $(document).ready((e)=> {
 
     //btn suditos
     $("#btn-suditos").click((e)=>{
-       $("#msg-erros").hide() 
+       $("#msg").hide() 
        $.ajax({
            url: '/suditos',
            method: 'get',
@@ -16,7 +16,7 @@ $(document).ready((e)=> {
 
     //btn-pergaminho
     $("#btn-pergaminho").click((e)=>{
-       $("#msg-erros").hide() 
+       $("#msg").hide() 
         $.ajax({
             url: '/pergaminhos',
             method: 'get',

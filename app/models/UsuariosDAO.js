@@ -18,13 +18,12 @@ UsuariosDAO.prototype.autenticar = function(usuario, req, res){
             req.session.autorizado = (result[0] != undefined) ? true : false
             req.session.usuario    = (result[0] != undefined) ? result[0].usuario : false
             req.session.casa       = (result[0] != undefined) ? result[0].casa    : false  
-            if(req.session.autorizado){
-                res.redirect("jogo")
-            }else{
-                res.render('index',{validacao: {}, dadosForm: {}})
-            }
-                
-            }) //TERNÁRIO QUE POPULA SESSION
+                if(req.session.autorizado){
+                    res.redirect("jogo")
+                }else{
+                    res.render('index',{validacao: {}, dadosForm: {}})
+                }    
+            }) 
 
             
             mongoclient.close()

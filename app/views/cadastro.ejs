@@ -40,6 +40,15 @@
 					</ul>
 				</div>
 			<% } %>
+			<% if(sucesso) { %>
+				<div class="alert alert-success">
+				<strong>Atenção!!!</strong>
+					<ul>
+						<li>Usuário Cadastrado com Sucesso</li>
+					</ul>
+					<a href="/">Começar a Jogar!</a>
+				</div>
+			<% } %>
 			<form class="form-cadastro" action="/cadastrar" method="post">
 			
 				<div class="row">

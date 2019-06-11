@@ -1,5 +1,5 @@
 module.exports.cadastro = (application,req,res) => {
-    res.render("cadastro",{validacao: {}, dadosForm: {}})
+    res.render("cadastro",{validacao: {}, dadosForm: {},sucesso: false})
 } 
 
 module.exports.cadastrar = (application,req,res) => {
@@ -13,7 +13,7 @@ module.exports.cadastrar = (application,req,res) => {
     const erros = req.validationErrors()
 
     if(erros){
-        res.render("cadastro",{validacao: erros, dadosForm: dadosForm})
+        res.render("cadastro",{validacao: erros, dadosForm: dadosForm, sucesso: false})
         return
     }
 
@@ -25,6 +25,6 @@ module.exports.cadastrar = (application,req,res) => {
     JogoDAO.gerarParametros(dadosForm.usuario)
 
 
-    res.redirect('cadastro')
+    res.render("cadastro",{validacao: {}, dadosForm: {}, sucesso: true})
 
 }

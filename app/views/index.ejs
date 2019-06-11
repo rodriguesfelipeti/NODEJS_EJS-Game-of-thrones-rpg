@@ -29,7 +29,8 @@
 							<% }) %>
 						</ul>
 					</div>
-				<% }else if(validacao) { %>
+				<% } %>
+				<% if(validacao.msg == 'Usuário ou Senha Inválidos' ) { %>
 					<div class="alert alert-danger">
 						<%=validacao.msg%>
 					</div>

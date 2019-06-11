@@ -21,12 +21,13 @@ UsuariosDAO.prototype.autenticar = function(usuario, req, res){
                 if(req.session.autorizado){
                     res.redirect("jogo")
                 }else{
-                    erros = {
-                        param: 'invalido',
-                        msg: 'Usuário ou Senha Inválidos',
-                        value: ''
-                    }
-                    res.render('index',{validacao: erros, dadosForm: req.body})
+
+                    res.render('index',{validacao:{
+                                            param: 'invalido',
+                                            msg: 'Usuário ou Senha Inválidos',
+                                            value: ''
+                                        }, 
+                                        dadosForm: req.body})
                 }    
             }) 
 

@@ -32,6 +32,7 @@ JogoDAO.prototype.iniciaJogo = function(res, usuario, casa, msg){
 
 JogoDAO.prototype.acao = function(acao){
     this._connection.open((err, mongoclient) => {
+
         mongoclient.collection("acao",(err, collection) => {
             const date = new Date()
             let tempo = null
@@ -47,8 +48,26 @@ JogoDAO.prototype.acao = function(acao){
             }
             acao.acao_termina_eim = date.getTime() + tempo
             collection.insert(acao)
-            mongoclient.close()
-        })     
+        })  
+
+        mongoclient.collection("jogo",(err, collection) => {
+            var moedas = ''
+            switch(parseInt(acao.acao)){
+                case 1: moedas = -2 * acao.quantidade
+                break
+                case 2: moedas = -3 * acao.quantidade
+                break
+                case 3: moedas = -1 * acao.quantidade
+                break
+                case 4: moedas = -1 * acao.quantidade
+                break
+            }
+            collection.update(
+                { usuario: acao.usuario },
+                { $inc: {moeda: moedas} } //$INC FAZ INCREMENTO DE VALORES
+            )
+        }) 
+        mongoclient.close()
     })
 }
 

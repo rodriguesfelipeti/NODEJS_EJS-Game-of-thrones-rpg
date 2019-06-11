@@ -1,3 +1,5 @@
+const ObjectID = require('mongodb').ObjectID
+
 function JogoDAO(connection){
     this._connection = connection()
 }
@@ -80,6 +82,20 @@ JogoDAO.prototype.getAcoes = function(res,req,usuario){
                 res.render('pergaminhos', {acoes: result})
             }) 
             mongoclient.close()
+        })     
+    }) 
+}
+
+JogoDAO.prototype.revogarAcao = function(res,_id){
+    this._connection.open((err, mongoclient) => {
+        mongoclient.collection("acao",(err, collection) => {
+            collection.remove(
+                {_id : ObjectID(_id)},
+                (err, result) => {
+                    res.redirect('jogo?msg=D')
+                    mongoclient.close()
+                } 
+            )
         })     
     }) 
 }

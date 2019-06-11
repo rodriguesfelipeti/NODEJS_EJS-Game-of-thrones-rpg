@@ -54,6 +54,14 @@ module.exports.ordernar_acao_sudito = (application, req, res) =>{
     res.redirect('jogo?msg=B')
 }
 
+module.exports.revogar_acao = (application,req,res) => {
+    const url_query = req.query
+    const connection = application.config.dbConnection
+    const JogoDAO = new application.app.models.JogoDAO(connection)
+
+    JogoDAO.revogarAcao(res,url_query.id_acao)
+}
+
 module.exports.sair = (application,req,res) => {
     req.session.destroy( (err) => res.render('index',{validacao: {}, dadosForm: {}}))
 }

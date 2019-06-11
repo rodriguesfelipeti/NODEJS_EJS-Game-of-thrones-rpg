@@ -29,6 +29,12 @@
 
 	    <div class="container">
 	    	
+			<% if(comando_invalido == 'S'){ %>
+				<div class="alert alert-danger" id="msg-erros">
+					<strong>Operação Inválida, verifique se todos os campos foram informados.</strong>
+				</div>
+			<% } %>
+			
 			<div class="row">
 	    		<div class="col-sm-3 casa">
 					<img src="images/casa_<%=img_casa%>.jpg" />
@@ -62,7 +68,7 @@
 			<div class="row">
 				<div class="col-sm-3"></div>
 				<div class="col-sm-9">
-					<div class="acoes"></div>					
+					<div class="acoes" id="acoes">Senhor, o que deseja fazer hoje?</div>					
 				</div>
 			</div>
 			
@@ -73,12 +79,12 @@
 			
 				<div class="row">
 					<div class="col-sm-1">
-						<img src="images/outros/suditos.jpg" title="Aldeões" alt="Aldeões"/>
+						<img src="images/outros/suditos.jpg" title="Aldeões" alt="Aldeões" id="btn-suditos"/>
 						<span><%=jogo.suditos%></span>
 					</div>
 					
 					<div class="col-sm-1">
-						<img src="images/outros/pergaminho.jpg" title="Pergaminhos" alt="Pergaminhos"/>
+						<img src="images/outros/pergaminho.jpg" title="Pergaminhos" alt="Pergaminhos" id="btn-pergaminho"/>
 					</div>
 					
 					<div class="col-sm-8"></div>

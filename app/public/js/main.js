@@ -8,6 +8,10 @@ $(document).ready((e)=> {
         window.location.href= '/cadastro'
     })
 
+    $('#btn-voltar').click((e)=>{
+        window.location.href= '/'
+    })
+
     //btn suditos
     $("#btn-suditos").click((e)=>{
        $("#msg").hide() 
